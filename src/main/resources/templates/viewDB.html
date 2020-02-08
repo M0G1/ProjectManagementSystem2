@@ -15,7 +15,7 @@
             <th>Text</th>
             <th>Tag</th>
         </tr>
-        <tr th:each="msg:${messages}}">
+        <tr th:each="msg:${message}}">
             <td th:utext="{$msg.id}">...</td>
             <td th:utext="{$msg.text}">...</td>
             <td th:utext="{$msg.tag}">...</td>

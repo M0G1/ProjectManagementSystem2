@@ -5,8 +5,7 @@ import hello.repos.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller // This means that this class is a Controller
 
@@ -32,5 +31,26 @@ public class GreetingController {
         Iterable<Message> messages = msgRepository.findAll();
         model.addAttribute("messages", messages);
         return "viewDB";
+    }
+
+
+    @RequestMapping(path = "/add", method = RequestMethod.GET)
+    public @ResponseBody
+    String addMessage(@RequestParam String text, @RequestParam String tag) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+        Message newMsg = new Message();
+        newMsg.setText(text);
+        newMsg.setTag(tag);
+        msgRepository.save(newMsg);
+        return "Message saved";
+        //localhost:8080/add?text=SomeText&tag=SomeTag
+    }
+
+    @RequestMapping(path = "/allMsg", method = RequestMethod.GET)
+    public @ResponseBody
+    Iterable<Message> getAllMsg() {
+        // @ResponseBody means the returned String is the response, not a view name
+        return msgRepository.findAll();
     }
 }
