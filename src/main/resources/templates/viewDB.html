@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+</head>
+<body>
+<h1>Messages</h1>
+<a>Empty link</a>
+<br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+            <th>Tag</th>
+        </tr>
+        <tr th:each="msg:${messages}}">
+            <td th:utext="{$msg.id}">...</td>
+            <td th:utext="{$msg.text}">...</td>
+            <td th:utext="{$msg.tag}">...</td>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>
