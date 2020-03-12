@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <title>Create task type</title>
+
+</head>
+<body>
+<h1>Form</h1>>
+<form action="#" th:action="@{/msgForm}" th:object="${msgForBd}" method="post">
+    <p>Id: <input type="text" th:field="*{id}"/></p>>
+    <p>Message: <input type="text" th:field="*{text}"/></p>>
+    <p>Tag: <input type="text" th:field="*{tag}"/></p>>
+    <p><input type="submit" value="sumbit"/><input type="reset" value="reset"></p>>
+</form>>
+</body>
+</html>

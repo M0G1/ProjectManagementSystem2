@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller // This means that this class is a Controller
-
 public class GreetingController {
 
     @Autowired // This means to get the bean called userRepository
@@ -31,6 +30,19 @@ public class GreetingController {
         Iterable<Message> messages = msgRepository.findAll();
         model.addAttribute("messages", messages);
         return "viewDB";
+    }
+
+    @RequestMapping(path = "/msgForm",method = RequestMethod.POST)
+    public @ResponseBody String putMsgIntoDB(Message msgForBd,Model model){
+        model.addAttribute("msgForBd", msgForBd);
+        msgRepository.save(msgForBd);
+        return "Message saved";
+    }
+
+    @RequestMapping(path = "/msgForm",method = RequestMethod.GET)
+    public String putMsgIntoDB(Model model){
+        model.addAttribute("msgForBd",new Message());
+        return "msgForm";
     }
 
 
