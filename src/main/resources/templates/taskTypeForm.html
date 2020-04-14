@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <title>Create task type</title>
+
+</head>
+<body>
+    <h1>New task type</h1>>
+    <form action="#" th:action="@{/taskTypeForm}" th:object="${lastAddedTaskType}" method="post">
+        <p>Enter the name for type of task </p>
+        <p>Name: <input type="text" th:field="*{name}"/></p>>
+        <p><input type="submit" value="save"/><input type="reset" value="reset"></p>>
+    </form>>
+</body>
+</html>
